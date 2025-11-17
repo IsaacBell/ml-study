@@ -14,7 +14,7 @@ Binary and multiclass classifications.
 
 - Supervised
 - Input: a set of numerical features
-- Outpout: probability value (for one or many classes)
+- Output: probability value (for one or many classes)
 
 ## Concepts
 

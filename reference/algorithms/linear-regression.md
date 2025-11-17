@@ -16,7 +16,7 @@ In smaller datasets, it can be directed computed with linear algebra. In large d
 
 - Supervised
 - Input: a set of numerical features
-- Outpout: a scalar representing the prediction
+- Output: a scalar representing the prediction
 
 ## Concepts
 
@@ -40,11 +40,11 @@ see `regression-loss-functions.md`
 - Squared loss: square of the loss. punishes large errors & outliers
 - Huber Loss: MAE + Squared Loss
 - Ridge Loss: squared loss + regularization (penalty term)
-- Lasso Loss: squared loss + penalty term that reduces less important params to be 0 (ignores them) 
+- Lasso Loss: squared loss + penalty term that reduces less important params to be 0 (ignores them)
 
 ## Evaluation
 
-### AIC (Akaike Information Criterion) and BIC (Bayesian Information Criterion) 
+### AIC (Akaike Information Criterion) and BIC (Bayesian Information Criterion)
 
 Used to adjust for param count and # of observations.
 
@@ -53,7 +53,7 @@ Useful when R-squared values are similar between 2 models. A lower AIC/BIC score
 ## Limitations
 
 - Doesn't inherently factor in causual relationships between features. May require feature engineering to capture features that represent those relationships (example - combining neighborhood location data with square footage).
-- Limited usefulness in very complex data scenarios. Example - stock prices are affected by many non-linear factors like market sentiment, volatility, interplay with other stocks, and time-related factors like time of day and seasonality. 
+- Limited usefulness in very complex data scenarios. Example - stock prices are affected by many non-linear factors like market sentiment, volatility, interplay with other stocks, and time-related factors like time of day and seasonality.
 
 ## Algo
 
@@ -62,8 +62,8 @@ import numpy as np
 from sklearn.linear_model import Ridge
 import statsmodels.api as sm
 
-X = ... 
-y = ... 
+X = ...
+y = ...
 
 # Create and fit Ridge regression model
 model = Ridge(alpha=0.1)
@@ -87,7 +87,7 @@ print(model.summary())
 
 ![Correlation Heatmap Example](https://i.imgur.com/04t9DYC.png)
 
-We can compare R-squared scores while removing one correlated feature at a time. 
+We can compare R-squared scores while removing one correlated feature at a time.
 
-- 
+-
 
