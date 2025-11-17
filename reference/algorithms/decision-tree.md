@@ -16,7 +16,7 @@ Fast, interpretable, explainable.
 
 - Supervised
 - Input: @TODO
-- Outpout: a scalar representing the prediction
+- Output: EITHER, class label and probability of classification, OR scalar value prediction
 
 ## Concepts
 

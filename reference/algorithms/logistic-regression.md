@@ -14,7 +14,7 @@ Binary and multiclass classifications.
 
 - Supervised
 - Input: a set of numerical features
-- Outpout: a scalar representing the prediction
+- Outpout: probability value (for one or many classes)
 
 ## Concepts
 
