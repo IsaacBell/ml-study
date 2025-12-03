@@ -106,6 +106,48 @@ Fixes for exploding gradients:
 - Gradient Clipping: setting an explicit threshold
 - The same fixes for vanishing gradients also apply
 
+## Why Not To Use a NN
+
+NNs aren't great for interpretability. Their complex structure can make it hard to understand their decision-making. 
+
+Simpler methods like Random Forest or gradient-boosted trees may be employed in such cases.
+
+## Activation Functions
+
+Activation functions introduce nonlinearity to the model, 
+
+- Sigmoid
+- Tanh
+- ReLU / Leaky ReLU
+
+## Optimizers
+
+See [](../optimization/optimizers.md)
+
+- Adam
+- AdamW
+- SGD (and SGD w/ momentum)
+
+## Preventing Overfitting
+
+ - Weight Decay: use L1 or L2 regularization to penalize large weights
+ - Dropout: randomly deactivate neurons during training to reduce reliance on them and add generalization
+ - Early Stopping: stop training when performance starts declining
+ - Model Compression: reduce model complexity to smoothen decision boundaries and add generalization. Techniques included pruning superfluous weights/connections
+ - Diversify data
+ - Reduce batch sizes
+
+## Regularization
+
+Adding a penalty to the loss function, to prevent overfitting and encourage simpler models.
+
+- L1 Regularization: uses the abs value of weight as the penalty term (loss gets bigger, weights become smaller)
+- L2: drives the model params towards zero less dramatically than L1
+
+## LSTMs (Long Short-Term Memory)
+
+LSTMs help regulate the flow of gradients. By retaining or forgetting info over time, LSTMs help stabilize gradients during backpropagation.
+
 ## Evaluation
 
 IT REALLY DEPENDS.
@@ -113,5 +155,7 @@ IT REALLY DEPENDS.
 ## Limitations
 
 - Complexity
+- Overfitting
+- Bias
 - Low interpretability/explainability, lack of transparency
 - Resource and time intensive
