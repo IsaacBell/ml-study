@@ -1,0 +1,57 @@
+- Inference Speed Optimization
+ 	- Pruning
+  		- remove non-critical layers/neurons/weights/filters.
+  		- Use in GPUs optimised for dense matrix multiplication
+  		- Requires retraining. Mainly useful on GPUs w/ high sparsity and sparse acceleration support (see: [NVIDIA Ampere 2:4 structured sparsity pattern](https://developer.nvidia.com/blog/structured-sparsity-in-the-nvidia-ampere-architecture-and-applications-in-search-engines/))
+ 	- Quantization
+  		- lower precision by reducing resolution (and thus precision).
+  		- Float32 -> Float16 -> INT8 -> INT4
+  		- leads to speedup and smaller footprint
+  		- Post-training quantization is easy and good for robust models
+  		- Use cases in CNNs, LLMs
+ 	- Distillation
+  		- train smaller model to mimic a bigger one. Primary method to redesign architecture while targeting hardware constraints
+  		- Go-to for deploying smaller models, specific tasks, or targeting an environment.
+  		- DistilBERT = 2x BERT speed w/ 97% accuracy
+ 	- Batching
+  		- scales sub-linearly. A batch of 32 inferences runs at about the same speed as running 3 inferences sequentially
+ 	- K/V Caching
+- LLM Tracing
+ 	- capture params like # of requests, response time, token use, cost, error rate
+- LLM Eval
+ 	- measure performance using benchmarks
+  		-  TruthfulQA, MMLU, GLUE
+ 	- track metrics like
+  		- performance, user feedback, cost
+- LangSmith
+ 	- @traceable decorator fn
+ 	- track I/O, model configs, latency, token cost, call sequences, errors
+ 	- performance metrics: accuracy, relevancy, specificity
+ 	- fairness/bias metrics
+- Feature Store
+ 	- registry/catalog for ML features, lineage tracking, and model tracking
+- Data Lake
+ 	- any storage repo w/ large amounts of raw data (AWS S3)
+ 	- Delta Lake - storage layer on top of a data lake, w/ ACID ops, schemas, versioning, and unified batching/streaming
+- Batching: Spark
+- Streaming: Flink/Kafka
+- Streaming more complex/costly than batching
+- ONNX: open std ML deployment format
+- TensorRT: high-performance deep learning SDK. Runs on NVIDIA
+- RAG
+ 	- Index vector embeddings w/ vector indices for search efficiency, adding metadata like URL, page, date
+ 	- Query vector DB by embedding the user query
+ 	- Reranking: extra model/service for reordering
+ 	- Summarized Text Comparison - can compare user prompt to text summaries for better matching
+ 	- Contextual Chunk Retrieval - include chunks adjacent to the most relevant ones
+ 	- Eval: there's no one answer. LLM-as-judge is common
+- MLFlow: open source E2E model lifecycle mgmt. Has eval framework & prompt engineering UI
+- Medallion Architecture: bronze/silv/gold
+ 	- Bronze: raw data from source
+ 	- Silver: cleaned
+ 	- Gold: enriched/aggregated data
+ 	- Tables: feature tables, inferences, metric tables
+- SHAP
+- DSPy
+- FAISS, Annoy
+- BIG-bench
