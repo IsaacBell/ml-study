@@ -63,7 +63,7 @@ They answer questions like:
 - All things equal, how would similarly sized houses be priced in different areas? (different latitudes/longitudes)
 - To what degree does diet difference impact patient health outcomes, ceterus paribus?
 
-*Technique:* repeatedly alter the value of one variable's value, track the change in prediction outcome, and chart the results.
+**Technique:** repeatedly alter the value of one variable's value, track the change in prediction outcome, and chart the results.
 
 ```python
 from matplotlib import pyplot as plt
@@ -114,7 +114,7 @@ Example Use Cases:
 
 We compare the impact of a specific value for a feature compared to a baseline value.
 
-*Formula:* `sum(SHAP values for all features) = pred_for_team - pred_for_baseline_values`
+**Formula:** `sum(SHAP values for all features) = pred_for_team - pred_for_baseline_values`
 
 ![Example SHAP Values Graph](https://storage.googleapis.com/kaggle-media/learn/images/JVD2U7k.png)
 
@@ -156,11 +156,11 @@ shap.force_plot(explainer.expected_value[1], shap_values[1], data_for_prediction
 
 ### Other Explainers
 
-- *shap.TreeExplainer*
-- *shap.DeepExplainer* - deep learning models
-- *shap.KernelExplainer* - works with all models (gives an approximated result)
+- **shap.TreeExplainer**
+- **shap.DeepExplainer** - deep learning models
+- **shap.KernelExplainer** - works with all models (gives an approximated result)
 
-*Kernel Explainer Example*
+**Kernel Explainer Example**
 
 ```python
 k_explainer = shap.KernelExplainer(model.predict_proba, train_X)
@@ -192,7 +192,7 @@ In this image, we see that:
 
 This example uses FIFA statistics to predict the probability of a player being declared "Man of the Match" (or "Player of the Game" for American readers).
 
-*Model Setup*
+**Model Setup**
 
 ```python
 import numpy as np
@@ -212,7 +212,7 @@ train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=1)
 my_model = RandomForestClassifier(random_state=0).fit(train_X, train_y)
 ```
 
-*Summary Plot*
+**Summary Plot**
 
 ```python
 import shap
@@ -291,7 +291,7 @@ all.groupby("time_in_hospital").mean().readmitted.plot()
 plt.show()
 ```
 
-*Bonus*
+**Bonus**
 
 The model overview looks reasonable. Let's make a function that visualises which features increase a patient's risk of readmission, which ones decrease it, and by how much.
 

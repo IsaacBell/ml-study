@@ -10,15 +10,15 @@ Use Cases:
 
 ## Requirements
 
-*Functional*
+**Functional**
 
-- *Natural language understanding:* identifying entities, intent, and sentiment from user input
-- *Content retention:* storing and recall details from earlier in the conversation
-- *State management:* tracking conversation flow, unresolved queries, and user end goals
-- *Personalization:* tailoring responses based on user preferences and historical interaction
-- *Natural language generation:* accurate query responses with naturala language
+- **Natural language understanding:** identifying entities, intent, and sentiment from user input
+- **Content retention:** storing and recall details from earlier in the conversation
+- **State management:** tracking conversation flow, unresolved queries, and user end goals
+- **Personalization:** tailoring responses based on user preferences and historical interaction
+- **Natural language generation:** accurate query responses with naturala language
 
-*Non-Functional*
+**Non-Functional**
 
 - Low latency
 - Scalability
@@ -40,7 +40,7 @@ Compared to larger models, it has faster training, reduced computational costs, 
 
 ### Training process
 
-*Data Prep*
+**Data Prep**
 
 Steps:
 
@@ -63,7 +63,7 @@ Format:
 
 Note: Many off-the-shelf datasets will come in formats that may not be suitable for training immediately. We may need to remove or merge some columns (features) to prepare the dataset for training.
 
-*Preprocessing Considerations*
+**Preprocessing Considerations**
 
 - **Topics:** the distribution of topics should ensure balanced representation. Some topics (weather, hobbies) may appear more frequently in the dataset. This could lead to model bias.
 - **Demographics:** biases towards sex, race, age, or socioeconomic condition. 
@@ -75,7 +75,7 @@ Note: Many off-the-shelf datasets will come in formats that may not be suitable 
 
 Human review may be needed.
 
-*Bias Mitigation*
+**Bias Mitigation**
 
 - **Synthetic data generation:** can address underrepresented topics or demographics
 - **Downsample overrepresented groups**

@@ -17,13 +17,13 @@ Training Time (in seconds) = (Total FLOPS required) / (FLOPS our computer can do
 
 These factors impact the total # of FLOPs required:
 
-- *Number of Parameters:* # of internal weights updated during training. This reflects the model's size (GPT has billions of parameters).
-- *FLOPS per data item:* # of calculations needed to process a single piece of data (one forward and backward pass)
-- *Epochs:* # of times the model will see the entire dataset during training
-- *Data Items:* total # of items in the dataset, like sentences or images
-- *Model Architecture Constant:* A constant representing model-specific workload, such as the number of generation steps (e.g., for a Diffusion model) or iterations.
-- *Rate of Operations:* speed of a single GPU, measured in FLOPS per second
-- *Total Number of GPUs*
+- **Number of Parameters:** # of internal weights updated during training. This reflects the model's size (GPT has billions of parameters).
+- **FLOPS per data item:** # of calculations needed to process a single piece of data (one forward and backward pass)
+- **Epochs:** # of times the model will see the entire dataset during training
+- **Data Items:** total # of items in the dataset, like sentences or images
+- **Model Architecture Constant:** A constant representing model-specific workload, such as the number of generation steps (e.g., for a Diffusion model) or iterations.
+- **Rate of Operations:** speed of a single GPU, measured in FLOPS per second
+- **Total Number of GPUs**
 
 Ultimately, the # of FLOPs required is the total number of math problems you have to solve.
 
@@ -57,11 +57,11 @@ Key questions:
 
 Disk space required to store the LLM itself.
 
-*Formula:* 
+**Formula:** 
 
 `Model storage = No. of parameters × Data precision`
 
-*Data precision:*
+**Data precision:**
 
 Size of a single parameter (in bytes). Options include:
 
@@ -74,14 +74,14 @@ Higher precision (like FP32) means greater accuracy but results in a larger mode
 
 Lower precision (like FP16) can significantly reduce the model's size and improve performance, which helps optimize costs.
 
-*Example Calculation*
+**Example Calculation**
 
 Storage for a 3 billion parameter model using FP16 precision.
 
 Model storage = 3 Billion parameters × 2 Bytes/parameter
               = 6 GB
 
-*Real model examples*
+**Real model examples**
 
 Llama 3.2 (3B params) * FP16 (x2) = 6GB
 Llama 3.2 (3B params) * FP32 (x4) = 12GB
@@ -92,11 +92,11 @@ Stable Diffusion 3.5 Large (8.1B) * FP64 (x8) = 64.82GB
 
 Storage needed for all user metadata, such as account information, preferences, and other profile details.
 
-*Formula*
+**Formula**
 
 `User data = Number of users × Storage required per user`
 
-*Example Calculation* 
+**Example Calculation** 
 
 For a system with 100 million users, where each user's profile takes about 10 KB:
 
@@ -107,7 +107,7 @@ User data = 100M users × 10 KB/user
 
 Storage needed each day to log user interactions with the model, such as prompts and responses.
 
-*Formula*
+**Formula**
 
 `User interaction data = Number of users × Daily interactions × Single interaction size`
                        = DAU * requests/day * storage space for one prompt/response pair
@@ -123,13 +123,13 @@ We must also account for indexing.
 
 Indexing creates special data structures that help the system retrieve user interaction data quickly, but this requires additional storage.
 
-*Formula*
+**Formula**
 
 `Storage required per day = Users interaction data + Indexing storage`
 
 Indexing storage is typically estimated as a percentage of the data it's indexing. Let's assume it requires an additional 25% of the user interaction data storage.
 
-*Example Calculation*
+**Example Calculation**
 
 Indexing storage = 2 TB × 0.25
                  = 0.5 TB per day
@@ -151,7 +151,7 @@ We can break this down in 4 steps.
 
 `TRPS = (No. of users × Requests per day per user) / 86400 seconds`
 
-*Example*
+**Example**
 
 For 100 million users making 10 requests per day:
 
@@ -165,7 +165,7 @@ Note: this calculation assumes a uniform distribution of requests throughout the
 
 How long does it take for a single GPU to process one request?
 
-*Formula*
+**Formula**
 
 `T_inference = (N_params × 2 × C) / R_ops`
 
@@ -176,7 +176,7 @@ For an NVIDIA A100 GPU, the rates are:
 - FP16: 312 TFLOPS (Trillion FLOPS)
 - FP32: 19.5 TFLOPS
 
-*Example Calculation*
+**Example Calculation**
 
 Time to generate 500 tokens with a 3B parameter model on an NVIDIA A100 GPU using FP16 precision.
 
@@ -192,11 +192,11 @@ How many requests one GPU can handle per second.
 
 It's simply the inverse of the inference time.
 
-*Formula*
+**Formula**
 
 `QPS = 1 / T_inference`
 
-*Example Calculation* 
+**Example Calculation** 
 
 Using the inference time from the previous section:
 
@@ -210,11 +210,11 @@ This means a single NVIDIA A100 GPU can process approximately 104 of these speci
 
 Divide the total requests our system needs to handle (TRPS) by the number of requests a single GPU can handle (QPS) to find the total number of GPUs needed.
 
-*Formula*
+**Formula**
 
 Inference servers required = TRPS / QPS
 
-*Example Calculation*
+**Example Calculation**
 
 Inference servers required = 11,574 TRPS / 104 QPS
                            ≈ 112 GPUs
@@ -234,11 +234,11 @@ We first need to assume an average request size.
 
 A typical assumption is 2 KB per request, which accounts for metadata, headers, and the user's input prompt.
 
-*Formula*
+**Formula**
 
 `Ingress bandwidth = TRPS × Request size`
 
-*Example Calculation*
+**Example Calculation**
 
 Using our TRPS of 11,574 and a 2 KB request size:
 
@@ -257,11 +257,11 @@ Capacity needed to send the model's generated responses back to all users.
 
 For a text-to-text generation system, a reasonable assumption is an average response size of 10 KB (about 1K characters).
 
-*Formula*
+**Formula**
 
 `Egress bandwidth = TRPS × Response size`
 
-*Example Calculation*
+**Example Calculation**
 
 Using our TRPS of 11,574 and a 10 KB response size:
 

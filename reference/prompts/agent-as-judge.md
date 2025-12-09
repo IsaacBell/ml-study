@@ -4,7 +4,7 @@
 
 ### Job Search Recommender
 
-*Agent evals*
+**Agent evals**
 
 ```python
 CONSERVATIVE_EVALUATOR_INSTRUCTION = """
@@ -106,7 +106,7 @@ deliberation_agents = ParallelAgent(
 print("✅ Agents 3 & 4 (A2A Deliberation) defined - with strict JSON enforcement")
 ```
 
-*Ensemble Consensus Agent*
+**Ensemble Consensus Agent**
 
 ```python
 CONSENSUS_INSTRUCTION = """

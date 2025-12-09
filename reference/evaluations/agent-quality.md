@@ -4,7 +4,7 @@ Traditional software verification asks, "Did we build the product right?". Moder
 
 In traditional ML/deep learning systems, statistical metrics (like F1 score, recall) are used to evaluate regression/classification models.
 
-Agentic AI systems require a new paradigm, as their technical shifts render old practices outmoded. The primary focus of eval is no longer the model, but the *system trajectory*.
+Agentic AI systems require a new paradigm, as their technical shifts render old practices outmoded. The primary focus of eval is no longer the model, but the **system trajectory**.
 
 ## Agent Failures
 
@@ -17,9 +17,9 @@ Root cause analysis requires data analysis, model retraining, and system evals.
 
 Multi-agent systems (MAS) introduce further complexity:
 
-- *Emergent System Failures*: resource contention, communication bottlenecks, system deadlocks
-- *Cooperative Eval*: tracking success as a global metric (e.g. supply chain)
-- *Competitive Eval*: tracking agent performances individually, plus stability of market/environment (e.g. auction systems)
+- **Emergent System Failures**: resource contention, communication bottlenecks, system deadlocks
+- **Cooperative Eval**: tracking success as a global metric (e.g. supply chain)
+- **Competitive Eval**: tracking agent performances individually, plus stability of market/environment (e.g. auction systems)
 
 ## Strategic Shift: Outside-In Evaluation
 
@@ -30,13 +30,13 @@ Multi-agent systems (MAS) introduce further complexity:
 3. Robustness (reliability)
 4. Safety/Alignment (trustworthiness)
 
-*Effectiveness:* did the agent achieve the user's real intent? Did it drive KPIs/business metrics? Did it drive conversion, produce the right insight, etc.?
+**Effectiveness:** did the agent achieve the user's real intent? Did it drive KPIs/business metrics? Did it drive conversion, produce the right insight, etc.?
 
-*Efficiency:* Did the agent solve the problem _well_? Did it minimise token cost, wall-clock time (latency), and trajectory complexity (# of steps/loops taken)?
+**Efficiency:** Did the agent solve the problem _well_? Did it minimise token cost, wall-clock time (latency), and trajectory complexity (# of steps/loops taken)?
 
-*Robustness:* How does the agent handle adversity? API timeouts, website layout updates, ambiguous prompts, failure scarions, etc. Does it retry failed tasks, get user clarification, and report what went wrong and why (rather than hallucinate/crash)?
+**Robustness:** How does the agent handle adversity? API timeouts, website layout updates, ambiguous prompts, failure scarions, etc. Does it retry failed tasks, get user clarification, and report what went wrong and why (rather than hallucinate/crash)?
 
-*Safety/Alignment:* Does the agent stay within ethical bounds? Is it fair and non-biased? Is it secure against prompt injection attacks and data leakage possibilities? Does the agent stay on task, operate as expected as a representative of your company, and refuse harmful instructions?
+**Safety/Alignment:** Does the agent stay within ethical bounds? Is it fair and non-biased? Is it secure against prompt injection attacks and data leakage possibilities? Does the agent stay on task, operate as expected as a representative of your company, and refuse harmful instructions?
 
 ## Judgment and Validation
 
@@ -70,7 +70,7 @@ Starting from the outside in, we might start by defining core objectives. Metric
 - User Satisfaction: direct feedback scores (CSAT, likes/dislikes)
 - Quality: could be quantitative or qualitative. Quantitative examples: accuracy, completeness (were all 5 articles summarized?)
 
-As failures are identified, we can look inside the to assess components and internals. Here we inspect *the process:*
+As failures are identified, we can look inside the to assess components and internals. Here we inspect **the process:**
 
 - Planning
     - Core reasoning: is the LLM at fault? Check for hallucinations, off-topic responses, context pollution, and repetitive loops.
@@ -84,7 +84,7 @@ As failures are identified, we can look inside the to assess components and inte
 
 Hybrid judgment is the most common method of review.
 
-*Automated Metrics*
+**Automated Metrics**
 
 Efficient but shallow. Generally the first quality gate in CI/CD. Great as a "first filter" for quality. 
 
@@ -94,7 +94,7 @@ Use them for regression testing.
 - Embedding similarity (BERTScore, cosine similarity) checking semantic closeness
 - Task-specific benchmarks (TruthfulQA)
 
-*LLM-as-Judge*
+**LLM-as-Judge**
 
 Use a (powerful) LLM to evaluate another agent's output.
 
@@ -104,7 +104,7 @@ A typical prompt includes a reference answer, the original user prompt, the agen
 
 This is fast and scales to thousands of scenarios, enabling iterative evaluation.
 
-*Pairwise LLM-as-Judge*
+**Pairwise LLM-as-Judge**
 
 Prioritize pairwise comparison over single-scoring to mitigate bias. Run the eval prompt against two agent versions (e.g., "main" vs. "staging") and generate an "Answer A" and "Answer B" for each prompt.
 
@@ -135,18 +135,18 @@ Agents require a deeper eval than just their final output.
 
 Agent-as-Judge is an extension/evolution of the LLM-as-judge technique, using an agent to assess process, not just output.
 
-*Eval Dimensions:*
+**Eval Dimensions:**
 
 - Plan Quality: was the plan logically structured and doable?
 - Tool Use: were the right tools chosen and used well?
 - Context handling: did the agent use prior info effectively?
 
-*Steps:*
+**Steps:**
 
 - Configure agent-under-eval to log and export traces (including internal plan, list of tools used, arguments passed)
 - Create a Critic Agent that evaluates the trace
 
-*Prompt Rubric:*
+**Prompt Rubric:**
 
 1. Based on the trace, was the initial plan logical?
 2. Was the {tool_A} tool the correct first choice, or should another tool have been used?
@@ -158,7 +158,7 @@ The goal is to identify process failures, even if the final output is correct.
 
 @TODO
 
-*Steps:*
+**Steps:**
 
 - Implement an [interruption workflow](https://google.github.io/adk-docs/tools/confirmation/). 
 - Configure the agent to pause execution before commiting to a high-stakes action. 
@@ -166,7 +166,7 @@ The goal is to identify process failures, even if the final output is correct.
 
 ## User Feedback and Reviewer UI
 
-*Best Practices:*
+****Best Practices:****
 
 - Low-friction feedback: thumbs up/down, quick sliders, or short comments.
 - Context-rich review: feedback should be paired with the full conversation and agent’s reasoning trace.
